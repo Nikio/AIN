@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<project default="AIN">
+	<target name="AIN">
+		<jar destfile="bin/Server.jar">
+			<zipfileset dir="" includes="Server/*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="Server.Server" />
+			</manifest>
+		</jar>
+		<jar destfile="bin/Client.jar">
+			<zipfileset dir="" includes="Client/*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="Client.Client" />
+			</manifest>
+		</jar>
+	</target>
+</project>
