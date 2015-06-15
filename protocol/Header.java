@@ -7,7 +7,7 @@ package protocol;
 public class Header {
 
 	/*
-	 * Header (String: Typ+SeqNr+Msg-ID+Msg-PacketNr+GrößePayloads), Typ: 6 chars, SeqNr: 10 chars, Msg-ID: 5 chars, Packet-Nr: 3 chars, GrößePayloads: 3 chars → 27 Zeichen
+	 * Header (String: Typ+SeqNr+Msg-ID+Msg-PacketNr+GrößePayloads), Typ: 1 chars, SeqNr: 10 chars, Msg-ID: 5 chars, Packet-Nr: 3 chars, GrößePayloads: 3 chars → 22 Zeichen
 	 * 
 	 * Typ (Welche? Verbindung: (SYN, ACK, SYNACK, FIN, ERR), Msg: (DATA, DACK, RESEND, ERR))
 	 * 
@@ -31,9 +31,24 @@ public class Header {
 
 	}
 
+	public Header(int type, int seqNr, int msgID, int msgPacketNr, int payloadSize) {
+		setType(type);
+		setSeqNr(seqNr);
+		setMsgID(msgID);
+		setMsgPacketNr(msgPacketNr);
+		setPayloadSize(payloadSize);
+	}
+
+	public Header(String data) {
+		setType(Integer.parseInt(data.substring(0, 1)));
+		setSeqNr(Integer.parseInt(data.substring(1, 11)));
+		setMsgID(Integer.parseInt(data.substring(11, 16)));
+		setMsgPacketNr(Integer.parseInt(data.substring(16, 19)));
+		setPayloadSize(Integer.parseInt(data.substring(19, 21)));
+	}
+
 	// Creates a string with all Header attributes
 	public String toString() {
-
 		String header = new String();
 		StringBuffer buffer = new StringBuffer(header);
 
