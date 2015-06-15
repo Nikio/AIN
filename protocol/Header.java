@@ -24,7 +24,7 @@ public class Header {
 	 * Später: Schriftart, Farbe, usw....
 	 */
 
-	int type, seqnr, msgId, msgPacketNr, msgPayload;
+	int type, seqNr, msgID, msgPacketNr, payloadSize;
 
 	// Default Constructor
 	public Header() {
@@ -38,10 +38,10 @@ public class Header {
 		StringBuffer buffer = new StringBuffer(header);
 
 		buffer.append(this.type);
-		buffer.append(this.seqnr);
-		buffer.append(this.msgId);
+		buffer.append(this.seqNr);
+		buffer.append(this.msgID);
 		buffer.append(this.msgPacketNr);
-		buffer.append(this.msgPayload);
+		buffer.append(this.payloadSize);
 
 		// Sout for testing purposes
 		System.out.print(header);
@@ -60,19 +60,19 @@ public class Header {
 	}
 
 	public int getSeqNr() {
-		return this.seqnr;
+		return this.seqNr;
 	}
 
 	public void setSeqNr(int seqNr) {
-		this.seqnr = seqNr;
+		this.seqNr = seqNr;
 	}
 
-	public int getMsgId() {
-		return this.msgId;
+	public int getMsgID() {
+		return this.msgID;
 	}
 
-	public void setMsgId(int msgId) {
-		this.msgId = msgId;
+	public void setMsgID(int msgID) {
+		this.msgID = msgID;
 	}
 
 	public int getMsgPacketNr() {
@@ -83,11 +83,11 @@ public class Header {
 		this.msgPacketNr = packetNr;
 	}
 
-	public int getPayload() {
-		return this.msgPayload;
+	public int getPayloadSize() {
+		return this.payloadSize;
 	}
 
-	public void setPayload(int msgPayload) {
-		this.msgPayload = msgPayload;
+	public void setPayloadSize(int msgPayload) {
+		this.payloadSize = msgPayload;
 	}
 }
