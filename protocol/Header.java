@@ -55,7 +55,7 @@ public class Header {
 		return this.type;
 	}
 
-	void setType(int type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
@@ -63,7 +63,7 @@ public class Header {
 		return this.seqnr;
 	}
 
-	void setSeqNr(int seqNr) {
+	public void setSeqNr(int seqNr) {
 		this.seqnr = seqNr;
 	}
 
@@ -71,7 +71,7 @@ public class Header {
 		return this.msgId;
 	}
 
-	void setMsgId(int msgId) {
+	public void setMsgId(int msgId) {
 		this.msgId = msgId;
 	}
 
@@ -79,7 +79,7 @@ public class Header {
 		return this.msgPacketNr;
 	}
 
-	void setMsgPacketNr(int packetNr) {
+	public void setMsgPacketNr(int packetNr) {
 		this.msgPacketNr = packetNr;
 	}
 
@@ -87,7 +87,7 @@ public class Header {
 		return this.msgPayload;
 	}
 
-	void setPayload(int msgPayload) {
+	public void setPayload(int msgPayload) {
 		this.msgPayload = msgPayload;
 	}
 }
