@@ -18,16 +18,22 @@ public class NotConnected implements Protocolstate {
 		System.out.println("CurrentState: NotConnected");
 	}
 	
-	public Header createHeader(){
+	public Header createHeader(String event){
+		
 		Header header = new Header("SYN", 0, 0, 0);
 		
 		return header;
 	}
 	
 	public void handleEvent(String event, Actor c) {
-		 Header header = createHeader();
+		 Header header = createHeader(event);
 		 c.setState(new SYNSent());
-		 System.out.println(event + "\t SetToState: SYSSend" + "\t" + header.toString());
+		 try{
+			 c.sendMsg(header.toString());
+		 }catch(Exception e){
+			 
+		 };
+		 System.out.println(event + "\t SetToState: SYNSent" + "\t" + header.toString());
 	}
 	
 	//Current State:

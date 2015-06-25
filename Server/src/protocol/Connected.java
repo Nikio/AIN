@@ -21,9 +21,13 @@ public class Connected implements Protocolstate {
 		System.out.println("CurrentState: Connected");
 	}
 	
-	public Header createHeader(){
+	public Header createHeader(String event){
 		
-		Header header = new Header("DATA",0,0,0);
+		//Header header = new Header("DATA",0,0,0);
+		Header header = new Header();
+		header.getValuesFromString(event);
+		header.type = "DATA";
+		header.seqnr++;
 		
 		return header;
 	}
@@ -32,9 +36,22 @@ public class Connected implements Protocolstate {
 		if(event.contains("FIN")){
 			c.setState(new NotConnected());
 			System.out.println(event + "\tSetToState: NotConnected");
+		}else if(event.contains("DATA")){
+			
+			//Code for testing purposes!!!
+			Header header = new Header();
+			header.getValuesFromString(event);
+			header.type = "DACK";
+			header.seqnr++;
+			try{
+				c.sendMsg(header.toString() + event.substring(header.size()));
+			}catch(Exception e){
+				
+			}
+		}else if(event.contains("SYN")){
+			System.out.println("Active Connection");
 		}else{
 			
-			System.out.println("Active Connection");
 		}
 	}
 }

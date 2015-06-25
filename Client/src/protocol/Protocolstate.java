@@ -1,27 +1,35 @@
 package protocol;
 
 import actor.Actor;
-import protocol.*;
+
+/*
+ * This interface provides the necessary methods which have to be implemented by all states
+ */
 
 public interface Protocolstate {
 
 	
 	 public void handleEvent(String event, Actor c);
 	 public void printCurrentState();
-	 public Header createHeader();
+	 public Header createHeader(String event);
 	 
 	/*
 	 * What are the possible States?
 	 * 	- Connected
-	 * 		- Send Txtmsg
+	 * 		- Send Txtmsg 
 	 * 			- MsgWasAcknowledged
 	 *  			- Wait for incoming Msg
 	 *  			- Send a Msg
-	 * 			- MsgHasBeenSended
+	 * 			- MsgHasBeenSended 
 	 *  			- Wait until DACK is send or timer runs out
-	 * 		- Close Connection
+	 * 		- Close Connection (FIN-Handshake)
+	 * 			--> FINSent
+	 * 			--> FINRcvd
+	 * 			--> NotConnected
 	 * 	- NotConnected
 	 * 		- Establish Connection (Handshake) 
+	 * 			--> SYNSent
+	 * 			--> SYNRcvd
 	 */
 	
 	

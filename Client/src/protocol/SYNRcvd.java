@@ -8,8 +8,12 @@ public class SYNRcvd implements Protocolstate {
 		System.out.println("CurrentState: SYNRcvd");
 	}
 	
-	public Header createHeader(){
-		Header header = new Header("ACK", 1, 0, 0);
+	public Header createHeader(String event){
+		//Header header = new Header("ACK", 1, 0, 0);
+		Header header = new Header();
+		header.getValuesFromString(event);
+		header.type = "ACK";
+		header.seqnr++;
 		
 		return header;
 	}
